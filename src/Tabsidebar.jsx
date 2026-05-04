@@ -1,5 +1,6 @@
 import React, { useState } from "react";
 
+
 const CATEGORIES = [
   { label: "Corps", key: "buste" },
   { label: "Tête", key: "tete" },

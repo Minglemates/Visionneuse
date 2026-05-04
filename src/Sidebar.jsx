@@ -1,13 +1,13 @@
 import React, { useState } from 'react'
 
 const categories = [
-  { label: 'Corps', key: 'buste' },
-  { label: 'Tête', key: 'tete' },
-  { label: 'Jambe Gauche', key: 'jambe_lft' },
-  { label: 'Jambe Droite', key: 'jambe_rg' },
-  { label: 'Bras Gauche', key: 'bras_lft' },
-  { label: 'Bras Droite', key: 'bras_rg' },
-  { label: 'Queue', key: 'queue' },
+  { label: 'Corps', key: 'Buste' },
+  { label: 'Tête', key: 'Tête' },
+  { label: 'Jambe Gauche', key: 'Jambe_lft' },
+  { label: 'Jambe Droite', key: 'Jambe_rg' },
+  { label: 'Bras Gauche', key: 'Bras_lft' },
+  { label: 'Bras Droite', key: 'Bras_rg' },
+  { label: 'Queue', key: 'Queue' },
 ]
 
 const animaux = [
