@@ -34,14 +34,14 @@ function getModelPathsForPart(part, animal) {
   const animalCap = capitalize(animal)
   const uniqueSuffix = `?t=${Date.now()}`
   switch (part) {
-    case 'tete': return [`/Visionneuse/models/Tete_${animalCap}.glb${uniqueSuffix}`]
-    case 'buste': return [`/Visionneuse/models/Buste_${animalCap}.glb${uniqueSuffix}`]
-    case 'queue': return [`/Visionneuse/models/Queue_${animalCap}.glb${uniqueSuffix}`]
-    case 'jambe_lft': return [`/Visionneuse/models/Patte_${animalCap}_lft.glb${uniqueSuffix}`]
-    case 'jambe_rg': return [`/Visionneuse/models/Patte_${animalCap}_rg.glb${uniqueSuffix}`]
-    case 'bras_lft': return [`/Visionneuse/models/Bras_${animalCap}_lft.glb${uniqueSuffix}`]
-    case 'bras_rg': return [`/Visionneuse/models/Bras_${animalCap}_rg.glb${uniqueSuffix}`]
-    case 'short': return [`/Visionneuse/models/Short.glb${uniqueSuffix}`]
+    case 'tete': return [`/models/Tete_${animalCap}.glb${uniqueSuffix}`]
+    case 'buste': return [`/models/Buste_${animalCap}.glb${uniqueSuffix}`]
+    case 'queue': return [`/models/Queue_${animalCap}.glb${uniqueSuffix}`]
+    case 'jambe_lft': return [`/models/Patte_${animalCap}_lft.glb${uniqueSuffix}`]
+    case 'jambe_rg': return [`/models/Patte_${animalCap}_rg.glb${uniqueSuffix}`]
+    case 'bras_lft': return [`/models/Bras_${animalCap}_lft.glb${uniqueSuffix}`]
+    case 'bras_rg': return [`/models/Bras_${animalCap}_rg.glb${uniqueSuffix}`]
+    case 'short': return [`/models/Short.glb${uniqueSuffix}`]
     default: return []
   }
 }
@@ -94,7 +94,7 @@ function MysteryGLB({ path, onOpen, scale = 1.2, position = [0, -1, 0] }) {
     </group>
   )
 }
-useGLTF.preload('/Visionneuse/models/Box.glb')
+useGLTF.preload('/models/Box.glb')
 
 // -------- Viewer
 export default function Viewer({ selections, onRandomize }) {
