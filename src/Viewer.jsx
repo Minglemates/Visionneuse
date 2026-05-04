@@ -110,7 +110,7 @@ export default function Viewer({ selections, onRandomize }) {
   const [errorMsg, setErrorMsg] = useState('')
   const [form, setForm] = useState({ firstName: '', lastName: '', email: '' })
 
-  const baseModels = revealed ? ['/Visionneuse/models/Short.glb'] : []
+  const baseModels = revealed ? ['/models/Short.glb'] : []
   const selectedModels = revealed
     ? Object.entries(selections || {}).flatMap(([part, animal]) =>
         getModelPathsForPart(part, animal)
@@ -203,7 +203,7 @@ export default function Viewer({ selections, onRandomize }) {
     >
       {/* ✅ Logo responsive */}
       <img
-        src="/Visionneuse/logo.png"
+        src="/logo.png"
         alt="Logo MingleMates"
         style={{
           position: 'absolute',
@@ -255,7 +255,7 @@ export default function Viewer({ selections, onRandomize }) {
           }}
         >
           <img
-            src="/Visionneuse/actualiser.png"
+            src="/actualiser.png"
             alt="Générer aléatoirement"
             style={{
               width: 'clamp(50px, 20vw, 100px)',
@@ -326,7 +326,7 @@ export default function Viewer({ selections, onRandomize }) {
         <Suspense fallback={null}>
           {!revealed && (
             <MysteryGLB
-              path="/Visionneuse/models/Box.glb"
+              path="/models/Box.glb"
               onOpen={handleReveal}
             />
           )}
