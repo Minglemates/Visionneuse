@@ -11,14 +11,10 @@ const categories = [
 ]
 
 const animaux = [
-  { name: 'lion', emoji: '🦁' }, { name: 'hippopotame', emoji: '🦛' },
-  { name: 'corbeau', emoji: '🐦' }, { name: 'tigre', emoji: '🐅' },
-  { name: 'girafe', emoji: '🦒' }, { name: 'perroquet', emoji: '🦜' },
-  { name: 'mouton', emoji: '🐑' }, { name: 'vache', emoji: '🐄' },
-  { name: 'elephant', emoji: '🐘' }, { name: 'dauphin', emoji: '🐬' },
-  { name: 'requin', emoji: '🦈' }, { name: 'cameleon', emoji: '🦎' },
+  { name: 'lion', emoji: '🦁' }, { name: 'tigre', emoji: '🐅' },
+  { name: 'girafe', emoji: '🦒' }, { name: 'elephant', emoji: '🐘' },
   { name: 'crocodile', emoji: '🐊' }, { name: 'tortue', emoji: '🐢' },
-  { name: 'cochon', emoji: '🐖' },
+
 ]
 
 const PANEL_WIDTH = 250

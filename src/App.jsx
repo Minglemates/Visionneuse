@@ -12,9 +12,7 @@ const CATEGORIES = [
 
 // Liste simple pour la randomisation (doit matcher vos noms de fichiers glb)
 const ANIMAUX = [
-  'lion','hippopotame','corbeau','tigre','girafe','perroquet',
-  'mouton','vache','elephant','dauphin','requin','cameleon',
-  'crocodile','tortue','cochon'
+  'lion','tigre','girafe','elephant','crocodile','tortue'
 ]
 
 export default function App() {

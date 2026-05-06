@@ -8,20 +8,11 @@ import emailjs from 'emailjs-com'
 // --- Mapping emoji (copié de ta Sidebar)
 const emojiByName = {
   lion: '🦁',
-  hippopotame: '🦛',
-  corbeau: '🐦',
   tigre: '🐅',
   girafe: '🦒',
-  perroquet: '🦜',
-  mouton: '🐑',
-  vache: '🐄',
   elephant: '🐘',
-  dauphin: '🐬',
   requin: '🦈',
-  cameleon: '🦎',
   crocodile: '🐊',
-  tortue: '🐢',
-  cochon: '🐖',
 }
 
 // -------- Utils
@@ -198,25 +189,10 @@ export default function Viewer({ selections, onRandomize }) {
         position: 'fixed',
         inset: 0,
         overflow: 'hidden',
-        background: 'linear-gradient(to top, #a8d0f0, #0f1c4d)',
+        background: 'transparent',
       }}
     >
-      {/* ✅ Logo responsive */}
-      <img
-        src="/logo.png"
-        alt="Logo MingleMates"
-        style={{
-          position: 'absolute',
-          top: '2%',
-          left: '25%',
-          width: '100vw',
-          maxWidth: '250px',
-          height: 'auto',
-          zIndex: 10,
-          pointerEvents: 'none',
-          userSelect: 'none',
-        }}
-      />
+
 
       {/* ✅ Texte indicatif responsive */}
       {showHint && (
@@ -263,50 +239,6 @@ export default function Viewer({ selections, onRandomize }) {
               display: 'block'
             }}
           />
-        </button>
-      )}
-
-      {/* Bouton OR (inchangé) */}
-      <button
-        onClick={() => setGoldMode(v => !v)}
-        style={{
-          position: 'absolute',
-          top: '80%',
-          right: '10%',
-          zIndex: 100,
-          padding: '10px 20px',
-          background: goldMode ? '#FFD54D' : '#555',
-          color: goldMode ? '#000' : '#fff',
-          border: 'none',
-          borderRadius: '8px',
-          cursor: 'pointer',
-          fontWeight: 'bold'
-        }}
-      >
-        {goldMode ? 'OR' : 'OR'}
-      </button>
-
-      {/* Bouton Valider (ouvre le formulaire) */}
-      {revealed && (
-        <button
-          onClick={handleOpenValidate}
-          style={{
-            position: 'absolute',
-            bottom: '10%',
-            right: '30%',
-            zIndex: 20,
-            background: '#ffcc00',
-            color: '#0c1e4a',
-            border: 'none',
-            borderRadius: '10px',
-            padding: '12px 16px',
-            fontSize: '14px',
-            fontWeight: 'bold',
-            cursor: 'pointer',
-            boxShadow: '0 0 10px #ffcc00',
-          }}
-        >
-          Valider mon Minglemate
         </button>
       )}
 
