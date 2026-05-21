@@ -2,7 +2,6 @@ import React, { useState } from 'react'
 import Viewer from './Viewer'
 import Tabsidebar from './Tabsidebar'
 
-// Clés utilisées pour la randomisation
 const CATEGORIES = [
   { key: 'buste' }, { key: 'tete' },
   { key: 'jambe_lft' }, { key: 'jambe_rg' },
@@ -10,13 +9,13 @@ const CATEGORIES = [
   { key: 'queue' },
 ]
 
-// Liste simple pour la randomisation (doit matcher vos noms de fichiers glb)
 const ANIMAUX = [
   'lion','tigre','girafe','elephant','crocodile','tortue'
 ]
 
 export default function App() {
   const [selections, setSelections] = useState({})
+  const [revealed, setRevealed] = useState(false)
 
   const handleSelectPart = (part, animal) => {
     setSelections(prev => ({ ...prev, [part]: animal }))
@@ -25,17 +24,34 @@ export default function App() {
   const randomizeSelection = () => {
     const next = {}
     CATEGORIES.forEach(cat => {
-      next[cat.key] = ANIMAUX[Math.floor(Math.random() * ANIMAUX.length)]
+      next[cat.key] =
+        ANIMAUX[Math.floor(Math.random() * ANIMAUX.length)]
     })
     setSelections(next)
   }
 
   return (
-    <div style={{ width: '100vw', height: '100vh', position: 'relative', overflow: 'hidden' }}>
-      {/* Sidebar est FIXE, hors du layout */}
-      <Tabsidebar selections={selections} onSelectPart={handleSelectPart} />
-      {/* Le viewer occupe tout l’écran */}
-      <Viewer selections={selections} onRandomize={randomizeSelection} />
+    <div style={{
+      width:'100vw',
+      height:'100vh',
+      position:'relative',
+      overflow:'hidden'
+    }}>
+
+      {revealed && (
+        <Tabsidebar
+          selections={selections}
+          onSelectPart={handleSelectPart}
+        />
+      )}
+
+      <Viewer
+        selections={selections}
+        onRandomize={randomizeSelection}
+        revealed={revealed}
+        setRevealed={setRevealed}
+      />
+
     </div>
   )
 }

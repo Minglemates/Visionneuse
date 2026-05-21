@@ -15,6 +15,7 @@ const emojiByName = {
   crocodile: '🐊',
 }
 
+
 // -------- Utils
 function capitalize(word) {
   return word.charAt(0).toUpperCase() + word.slice(1).toLowerCase()
@@ -88,8 +89,9 @@ function MysteryGLB({ path, onOpen, scale = 1.2, position = [0, -1, 0] }) {
 useGLTF.preload('/models/Box.glb')
 
 // -------- Viewer
-export default function Viewer({ selections, onRandomize }) {
-  const [revealed, setRevealed] = useState(false)
+export default function Viewer({ selections, onRandomize, revealed,
+  setRevealed }) {
+  
   const [boxOpacity, setBoxOpacity] = useState(1)
   const [modelOpacity, setModelOpacity] = useState(0)
   const [showHint, setShowHint] = useState(true)
@@ -211,7 +213,7 @@ export default function Viewer({ selections, onRandomize }) {
             animation: 'bounceText 1s infinite',
           }}
         >
-          Clique sur la boite!<br /> Révéle ton MINGLEMATE
+          
         </div>
       )}
 
@@ -221,7 +223,7 @@ export default function Viewer({ selections, onRandomize }) {
           style={{
             position: 'absolute',
             bottom: '15%',
-            left: '45%',
+            left: '50%',
             transform: 'translateX(-50%)',
             zIndex: 20,
             background: 'none',
