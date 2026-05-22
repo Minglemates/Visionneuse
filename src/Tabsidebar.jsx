@@ -36,7 +36,7 @@ export default function TabSidebar({ selections, onSelectPart }) {
       <button
         onClick={() => setMenuOpen(!menuOpen)}
         style={{
-          width: 240,
+          width: 140,
           padding: "10px 18px",
           background: "linear-gradient(180deg, #1268e8 0%, #0039a8 100%)",
           color: "#fff",
@@ -44,9 +44,9 @@ export default function TabSidebar({ selections, onSelectPart }) {
           borderRadius: 16,
           fontWeight: 900,
           cursor: "pointer",
-          marginBottom: 12,
+          marginBottom: 600,
           boxShadow: "0 4px 0 #00256f, 0 6px 12px rgba(0,0,0,.35)",
-          fontSize: 18,
+          fontSize: 9,
           textTransform: "uppercase",
           lineHeight: 1.1,
           fontFamily: "Arial Black, system-ui, sans-serif",
@@ -68,7 +68,17 @@ export default function TabSidebar({ selections, onSelectPart }) {
       </button>
 
       {menuOpen && (
-        <div style={{ display: "flex", flexDirection: "column", gap: 8 }}>
+        <div
+    style={{
+      position: "absolute",
+      top: 60,
+      left: 0,
+      display: "flex",
+      flexDirection: "column",
+      gap: 8,
+      zIndex: 9999,
+    }}
+  >
           {CATEGORIES.map(({ label, key }) => {
             const isActive = active === key;
 
@@ -77,14 +87,15 @@ export default function TabSidebar({ selections, onSelectPart }) {
                 <button
                   onClick={() => setActive(isActive ? null : key)}
                   style={{
-                    width: 120,
-                    padding: "8px 12px",
+                    width: 100,
+                    padding: "2px 8px",
                     background: isActive ? "#FFC524" : "linear-gradient(180deg, #1268e8 0%, #0039a8 100%)",
                     color: isActive ? "#0c1e4a" : "#fff",
                     border: "2px solid #FFC524",
                     borderRadius: 12,
                     cursor: "pointer",
                     fontWeight: "bold",
+                    fontSize: 10,
                   }}
                 >
                   {label}
@@ -93,15 +104,15 @@ export default function TabSidebar({ selections, onSelectPart }) {
                 {isActive && (
                   <div
                     style={{
-                      marginTop: 4,
+                      marginTop: 5,
                       display: "grid",
                       gridTemplateColumns: "repeat(3, 1fr)",
                       gap: 4,
                       background: "linear-gradient(180deg, #1268e8 0%, #0039a8 100%)",
-                      borderRadius: 20,
+                      borderRadius: 10,
                       padding: 6,
                       width: 120,
-                      marginLeft: 55,
+                      marginLeft: 0,
                     }}
                   >
                     {ANIMAUX.map(({ name, emoji }) => {
@@ -113,7 +124,7 @@ export default function TabSidebar({ selections, onSelectPart }) {
                           onClick={() => onSelectPart(key, name)}
                           title={name}
                           style={{
-                            height: 38,
+                            height: 25,
                             borderRadius: 10,
                             background: selected ? "#FFC524" : "transparent",
                             color: selected ? "#0c1e4a" : "#fff",

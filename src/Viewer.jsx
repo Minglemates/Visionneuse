@@ -140,51 +140,6 @@ export default function Viewer({ selections, onRandomize, revealed,
     anim()
   }
 
-  // ---- Ouverture formulaire
-  const handleOpenValidate = () => {
-    setShowValidate(true)
-    setErrorMsg('')
-  }
-
-  // ---- Envoi EmailJS
-  const handleSend = async (e) => {
-    e.preventDefault()
-    setErrorMsg('')
-
-    if (!form.firstName || !form.lastName || !form.email) {
-      setErrorMsg('Merci de remplir Nom, Prénom et Email.')
-      return
-    }
-
-    setSending(true)
-    try {
-      const templateParams = {
-        to_name: 'Minglemates',
-        first_name: form.firstName,
-        last_name: form.lastName,
-        user_email: form.email,
-        selections_text: prettySelections(selections),
-        selections_json: JSON.stringify(selections, null, 2),
-      }
-
-      // 👉 REMPLACE ICI PAR TES VALEURS EMAILJS
-      const SERVICE_ID = 'service_qddbafc'
-      const TEMPLATE_ID = 'template_Minglemates'
-      const PUBLIC_KEY = '6ZsY9j6-nxxNYDW-y'
-
-      await emailjs.send(SERVICE_ID, TEMPLATE_ID, templateParams, PUBLIC_KEY)
-
-      setShowValidate(false)
-      setForm({ firstName: '', lastName: '', email: '' })
-      alert('Merci ! Votre Minglemate a été validé 🎉')
-    } catch (err) {
-      console.error(err)
-      setErrorMsg("Échec de l'envoi. Réessaie dans un instant.")
-    } finally {
-      setSending(false)
-    }
-  }
-
   return (
     <div
       style={{
@@ -245,7 +200,8 @@ export default function Viewer({ selections, onRandomize, revealed,
       )}
 
       {/* ✅ Canvas 3D */}
-      <Canvas camera={{ position: [0, 3, 28], fov: 50 }} gl={{ preserveDrawingBuffer: true, alpha: true, useLegacyLights: false }}>
+      <Canvas camera={{ position: [0, 3, 28], fov: 50 }} gl={{ preserveDrawingBuffer: true, alpha: true, useLegacyLights: false }}style={{background: "transparent"}}>
+        
         <ambientLight intensity={1} />
         <Environment preset="sunset" />
         <OrbitControls
@@ -299,106 +255,7 @@ export default function Viewer({ selections, onRandomize, revealed,
         </Suspense>
       </Canvas>
 
-      {/* ---- Modal Validation ---- */}
-      {showValidate && (
-        <div
-          style={{
-            position: 'fixed',
-            inset: 0,
-            background: 'rgba(0,0,0,0.5)',
-            display: 'flex',
-            alignItems: 'center',
-            justifyContent: 'center',
-            zIndex: 1000,
-          }}
-          onClick={() => setShowValidate(false)}
-        >
-          <form
-            onClick={(e) => e.stopPropagation()}
-            onSubmit={handleSend}
-            style={{
-              width: 'min(90vw, 420px)',
-              background: '#0c1e4a',
-              color: 'white',
-              border: '2px solid #ffcc00',
-              borderRadius: 12,
-              padding: 16,
-              boxShadow: '0 12px 40px rgba(0,0,0,0.4)',
-              fontFamily: 'system-ui, sans-serif',
-            }}
-          >
-            <h3 style={{ marginTop: 0, marginBottom: 12 }}>Valider mon Minglemate</h3>
-
-            <div style={{ display: 'grid', gap: 10 }}>
-              <label>
-                Prénom
-                <input
-                  type="text"
-                  value={form.firstName}
-                  onChange={(e) => setForm(f => ({ ...f, firstName: e.target.value }))}
-                  style={{ width: '100%', padding: 10, borderRadius: 8, border: '1px solid #335' }}
-                  required
-                />
-              </label>
-
-              <label>
-                Nom
-                <input
-                  type="text"
-                  value={form.lastName}
-                  onChange={(e) => setForm(f => ({ ...f, lastName: e.target.value }))}
-                  style={{ width: '100%', padding: 10, borderRadius: 8, border: '1px solid #335' }}
-                  required
-                />
-              </label>
-
-              <label>
-                Email
-                <input
-                  type="email"
-                  value={form.email}
-                  onChange={(e) => setForm(f => ({ ...f, email: e.target.value }))}
-                  style={{ width: '100%', padding: 10, borderRadius: 8, border: '1px solid #335' }}
-                  required
-                />
-              </label>
-
-              <div style={{ background: '#10295c', borderRadius: 8, padding: 10, fontSize: 12, whiteSpace: 'pre-wrap' }}>
-                <strong>Personnage choisi :</strong>
-                <br />
-                {prettySelections(selections)}
-              </div>
-
-              {errorMsg && (
-                <div style={{ color: '#ff7676', fontSize: 12 }}>{errorMsg}</div>
-              )}
-
-              <div style={{ display: 'flex', gap: 8, marginTop: 8 }}>
-                <button
-                  type="button"
-                  onClick={() => setShowValidate(false)}
-                  style={{
-                    flex: 1, padding: 10, borderRadius: 8, border: '1px solid #335',
-                    background: '#1a2a5a', color: '#fff', cursor: 'pointer'
-                  }}
-                >
-                  Annuler
-                </button>
-                <button
-                  type="submit"
-                  disabled={sending}
-                  style={{
-                    flex: 1, padding: 10, borderRadius: 8, border: 'none',
-                    background: '#ffcc00', color: '#0c1e4a', fontWeight: 700, cursor: 'pointer'
-                  }}
-                >
-                  {sending ? 'Envoi…' : 'Envoyer'}
-                </button>
-              </div>
-            </div>
-          </form>
-        </div>
-      )}
+      
 
       {/* ✅ Animation bounce */}
       <style>
